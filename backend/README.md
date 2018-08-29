@@ -1,24 +1,22 @@
-# README
+# Pfinder Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Voraussetzungen:
 
-* Ruby version
+- Ruby (Version siehe `.ruby-version`)
+- PostgreSQL
 
-* System dependencies
+Abhängigkeiten installieren:
 
-* Configuration
+```
+bundle install
+```
 
-* Database creation
+## Applikation starten
 
-* Database initialization
+```
+bundle exec puma
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Die Applikation ist nun unter http://localhost:3000 erreichbar
