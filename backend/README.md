@@ -6,6 +6,7 @@ Voraussetzungen:
 
 - Ruby (Version siehe `.ruby-version`)
 - PostgreSQL
+- Bundler (`gem install bundler`)
 
 Abhängigkeiten installieren:
 
