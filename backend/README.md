@@ -14,6 +14,13 @@ Abhängigkeiten installieren:
 bundle install
 ```
 
+Datenbank einrichten:
+
+
+```
+rails db:setup
+```
+
 ## Applikation starten
 
 ```
