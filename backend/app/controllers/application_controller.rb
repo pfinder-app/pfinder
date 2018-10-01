@@ -3,19 +3,9 @@ class ApplicationController < ActionController::API
     render_error({ message: e.message }, :not_found)
   end
 
-  rescue_from ActiveRecord::Rollback do |e|
-    render_error({ message: e.message }, :unprocessable_entity)
-  end
-
-  rescue_from ActiveRecord::RecordInvalid do |e|
-    render_error({ message: e.message }, :unprocessable_entity)
-  end
-
-  rescue_from ActiveRecord::InvalidForeignKey do |e|
-    render_error({ message: e.message }, :unprocessable_entity)
-  end
-
-  rescue_from ActionController::ParameterMissing do |e|
+  rescue_from ActiveRecord::InvalidForeignKey,
+              ActiveRecord::RecordInvalid, ActiveRecord::Rollback,
+              ActionController::ParameterMissing do |e|
     render_error({ message: e.message }, :unprocessable_entity)
   end
 
