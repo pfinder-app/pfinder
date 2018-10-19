@@ -1,24 +1,31 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">
-        Pfinder Login
-        <ons-icon icon="fa-heart"></ons-icon>
-      </div>
-    </v-ons-toolbar>
 
-    <v-ons-list>
-      <v-ons-list-item>
+    <v-ons-card>
+
         <div class="center">
-          <v-ons-input placeholder="E-Mail" float v-model="email"></v-ons-input>
+          <img src="../assets/logo_small.png">
         </div>
-      </v-ons-list-item>
-      <v-ons-list-item>
-        <v-ons-button modifier="large" @click="login" :disabled="email.length === 0">
-          Login
-        </v-ons-button>
-      </v-ons-list-item>
-    </v-ons-list>
+
+        <v-ons-list>
+          <v-ons-list-item>
+            <div class="center">
+              <v-ons-input placeholder="E-Mail" float v-model="email"></v-ons-input>
+            </div>
+          </v-ons-list-item>
+            <v-ons-list-item>
+            <div class="center">
+                <v-ons-input placeholder="Passwort" float v-model="password"></v-ons-input>
+            </div>
+            </v-ons-list-item>
+          <v-ons-list-item>
+            <v-ons-button modifier="large" @click="login" :disabled="email.length === 0">
+              Login
+            </v-ons-button>
+          </v-ons-list-item>
+        </v-ons-list>
+    </v-ons-card>
+
   </v-ons-page>
 </template>
 
@@ -37,3 +44,9 @@ export default class Login extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+  .center {
+    text-align: center;
+  }
+</style>
