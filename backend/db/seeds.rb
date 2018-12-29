@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u1 = User.create(name: 'Emily', scoutname: 'Folletta', birthdate: '1991-01-01', canton: :zh, scoutgroup: 'Pfadi Züri')
-u2 = User.create(name: 'Diego', scoutname: 'Filou', birthdate: '1988-01-01', canton: :be, scoutgroup: 'Korps Limmat')
+u1 = User.create(name: 'Emily', scoutname: 'Folletta', birthdate: '1991-01-01', canton: :zh, scoutgroup: 'Pfadi Züri', email: 'folletta@pfadizueri.ch', password: '123456')
+u2 = User.create(name: 'Diego', scoutname: 'Filou', birthdate: '1988-01-01', canton: :be, scoutgroup: 'Korps Limmat', email: 'filou@korpslimmat.ch', password: '123456')

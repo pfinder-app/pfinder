@@ -1,0 +1,48 @@
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/NonNilCheck:
+  IncludeSemanticChanges: true
+
+Naming/PredicateName:
+  Exclude:
+    - 'app/serializers/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/initializers/*.rb'
+    - 'config/environments/*.rb'
+    - 'config/routes.rb'
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+
+AllCops:
+  TargetRubyVersion: 2.4
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'script/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'config/unicorn.rb'
+    - 'db/**/*'
+    - 'vendor/bundle/**/*'
+    - 'lib/tasks/cucumber.rake'

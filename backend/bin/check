@@ -1,7 +1,23 @@
 #!/bin/sh
 
+echo "Executing rubocop"
+bundle exec rubocop -D
+if [ ! $? -eq 0 ]; then
+  echo 'rubocop detected issues!'
+  bundle exec rubocop -a -D -c .rubocop.yml
+  echo 'Tried to auto correct the issues, but must be reviewed manually, commit aborted'
+  exit 1
+fi
+
 bundle exec rspec
 if [ $? -ne 0 ]; then
   echo 'RSpec did not run successfully, commit aborted'
+  exit 1
+fi
+
+echo "Executing brakeman"
+bundle exec brakeman
+if [ ! $? -eq 0 ]; then
+  echo 'Brakeman has detected one or more security vulnerabilities, please review them and re-commit your changes, comm     it aborted'
   exit 1
 fi

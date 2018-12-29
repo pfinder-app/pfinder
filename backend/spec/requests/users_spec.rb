@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
+  let(:user) { create(:user) }
+  before { allow(controller).to receive(:current_user) { user } }
 
   describe 'GET' do
     context 'index' do
