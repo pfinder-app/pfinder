@@ -6,7 +6,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   backend:
     build: backend/.
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bin/run
     volumes:
       - ./backend:/app
     ports:
