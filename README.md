@@ -6,16 +6,9 @@ Voraussetzungen:
 
 - Docker und Docker Compose
 
-Container builder:
-
-```
-docker-compose build
-```
-
 Datenbank einrichten:
-
 ```
-docker-compose run backend bin/rails db:setup
+docker-compose run backend bin/rails db:create db:migrate db:seed
 ```
 
 ## Applikation starten
