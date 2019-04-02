@@ -1,3 +1,3 @@
 class UserEntity < Grape::Entity
-  expose :id, :name, :scoutname, :birthdate, :canton, :scoutgroup
+  expose :id, :name, :scoutname, :birthdate, :canton, :scoutgroup, :token, :email
 end
