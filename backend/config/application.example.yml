@@ -1,1 +1,1 @@
-SENTRY_DSN: '<fill-in-here>'
+ROLLBAR_ACCESS_TOKEN: '<fill-in-here>'

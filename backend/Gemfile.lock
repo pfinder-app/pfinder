@@ -58,8 +58,6 @@ GEM
       railties (>= 3.0.0)
     faker (1.9.3)
       i18n (>= 0.7)
-    faraday (0.15.4)
-      multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -88,7 +86,6 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.9)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -125,6 +122,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rollbar (2.18.0)
+      multi_json
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -143,8 +142,6 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
-    sentry-raven (2.9.0)
-      faraday (>= 0.7.6, < 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -179,8 +176,8 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.1)
+  rollbar
   rspec-rails
-  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
 
