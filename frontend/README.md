@@ -1,36 +1,36 @@
 # frontend
 
 ## Project setup
+
+Install global CLI tools
+```
+npm install -g @vue/cli
+npm install -g ionic
+```
+
+Install app dependencies
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+ionic serve
 ```
 
-### Compiles and minifies for production
+### Build for iOS
+
+Run
 ```
-npm run build
+ionic cordova build ios
 ```
 
-### Run your tests
-```
-npm run test
-```
+Then open a new XCode project with file `platforms/ios/Pfinde.xcodeproj`
+
+Run or build the app from within XCode.
 
 ### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```

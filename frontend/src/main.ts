@@ -1,21 +1,15 @@
 import Vue from 'vue';
 import App from './App.vue';
+import router from './router';
 import store from './store';
-import './registerServiceWorker';
+import Ionic from '@ionic/vue';
+import '@ionic/core/css/ionic.bundle.css';
 
-// Onsen UI CSS import
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components.css';
-
-// Onsen JS import
-// TODO: research if onsen ui typehints are available
-import VueOnsen from 'vue-onsenui';
-
-Vue.use(VueOnsen);
-
+Vue.use(Ionic);
 Vue.config.productionTip = false;
 
 new Vue({
+  router,
   store,
   render: (h) => h(App),
 }).$mount('#app');

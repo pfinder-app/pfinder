@@ -1,30 +1,29 @@
 <template>
   <div id="app">
-    <v-ons-navigator swipeable
-      :page-stack="pageStack"
-      @push-page="pageStack.push($event)"
-      @replace-page="pageStack.pop(); pageStack.push($event)"
-    ></v-ons-navigator>
+    <ion-app>
+      <ion-vue-router />
+    </ion-app>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Home from '@/views/Home.vue';
-import Login from '@/views/Login.vue';
-
-@Component({})
-export default class App extends Vue {
-
-  // start page
-  public pageStack = [Login];
-
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-</script>
+#nav {
+  padding: 30px;
+}
 
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-<style lang="scss">
-  a {
-    text-decoration: underline;
-  }
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
