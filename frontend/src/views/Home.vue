@@ -9,10 +9,11 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <h1>Welcome To @ionic/vue</h1>
-      <img alt="Vue logo" src="../assets/logo.png" width="200">
-      <br>
-      <router-link to="/about"><ion-button>About</ion-button></router-link>
+      <div style="text-align: center;">
+        <h1>Wilkommen bei Pfinder</h1>
+        <img alt="Vue logo" src="../assets/logo.png" width="200">
+        <br>
+      </div>
     </ion-content>
   </div>
 </template>
