@@ -55,7 +55,7 @@ cd frontend
 ionic cordova build ios
 ```
 
-Then open a new XCode project with file `frontend/platforms/ios/Pfinde.xcodeproj`
+Then open a new XCode project with file `frontend/platforms/ios/Pfinder.xcodeproj`
 
 Run or build the app from within XCode.
 
