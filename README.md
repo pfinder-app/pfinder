@@ -20,7 +20,7 @@ docker-compose run backend bin/rails db:create db:migrate db:seed
 docker-compose up
 ```
 
-The backend is now available at: http://localhost:3000
+The backend is now available at: http://localhost:3009
 
 
 ## Frontend (App)
