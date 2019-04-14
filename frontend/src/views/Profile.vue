@@ -9,8 +9,8 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" v-if="user">
-      <h1>{{user.name}}</h1>
-      <div>{{user.scout_group}}</div>
+      <h1>{{user.scoutname}}</h1>
+      <div>{{user.scoutgroup}}</div>
     </ion-content>
   </div>
 </template>

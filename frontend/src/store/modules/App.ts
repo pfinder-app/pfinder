@@ -1,15 +1,15 @@
 import {IUser} from "@/interfaces/IUser";
 
-export interface IAppStore {
+export interface IAppState {
   user: IUser|null;
 }
 
-const state: IAppStore = {
+const state: IAppState = {
   user: null,
 };
 
 const mutations = {
-  SET_USER (state, user: IUser) {
+  SET_USER (state: IAppState, user: IUser) {
     state.user = user
   },
 };

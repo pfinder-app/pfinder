@@ -11,6 +11,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   import AppMenu from "@/components/AppMenu.vue";
+  import {IUser} from "@/interfaces/IUser";
 
   @Component({
     components: {
@@ -19,11 +20,13 @@
   })
   export default class App extends Vue {
     mounted() {
-      let user = {
+      let user: IUser = {
         id: 1,
-        name: 'Spatz',
-        email: 'spatz@example.com',
-        scout_group: 'Pfadi Dunant'
+        name: 'Veronika',
+        scoutname: 'Spatz',
+        birthdate: '2000-01-02',
+        canton: 'zh',
+        scoutgroup: 'Pfadi Dunant'
       };
       this.$store.commit('SET_USER', user)
     }
