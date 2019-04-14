@@ -10,7 +10,8 @@
     </ion-header>
     <ion-content class="ion-padding" v-if="user">
       <h1>{{user.scoutname}}</h1>
-      <div>{{user.scoutgroup}}</div>
+      <div>{{user.scoutgroup}}, {{user.canton}}</div>
+      <div>{{user.birthdate}}</div>
     </ion-content>
   </div>
 </template>

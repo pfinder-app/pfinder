@@ -12,6 +12,7 @@
   import { Component, Vue } from 'vue-property-decorator';
   import AppMenu from "@/components/AppMenu.vue";
   import {IUser} from "@/interfaces/IUser";
+  import axios from 'axios';
 
   @Component({
     components: {
@@ -20,15 +21,9 @@
   })
   export default class App extends Vue {
     mounted() {
-      let user: IUser = {
-        id: 1,
-        name: 'Veronika',
-        scoutname: 'Spatz',
-        birthdate: '2000-01-02',
-        canton: 'zh',
-        scoutgroup: 'Pfadi Dunant'
-      };
-      this.$store.commit('SET_USER', user)
+      axios.get('/api/users/1').then((response) => {
+        this.$store.commit('SET_USER', response.data.data)
+      })
     }
   }
 </script>
