@@ -15,6 +15,14 @@
             </ion-label>
           </ion-item>
         </router-link>
+        <router-link to="/profile">
+          <ion-item @click="close()">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>
+              Mein Profil
+            </ion-label>
+          </ion-item>
+        </router-link>
         <router-link to="/about">
           <ion-item @click="close()">
             <ion-icon name="information-circle-outline" slot="start"></ion-icon>

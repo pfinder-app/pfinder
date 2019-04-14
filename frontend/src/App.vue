@@ -17,7 +17,17 @@
       AppMenu
     }
   })
-  export default class App extends Vue {}
+  export default class App extends Vue {
+    mounted() {
+      let user = {
+        id: 1,
+        name: 'Spatz',
+        email: 'spatz@example.com',
+        scout_group: 'Pfadi Dunant'
+      };
+      this.$store.commit('SET_USER', user)
+    }
+  }
 </script>
 
 <style>
