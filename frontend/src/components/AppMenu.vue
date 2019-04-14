@@ -33,9 +33,8 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class AppMenu extends Vue {
-  public close() {
+  public close(): void {
     // this is kind of hacky, but i couldn't find a better way
-    document.querySelector('ion-menu-controller').close('start');
   }
 }
 </script>
