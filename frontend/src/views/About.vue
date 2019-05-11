@@ -2,6 +2,9 @@
   <div class="ion-page">
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button menu="start"></ion-menu-button>
+        </ion-buttons>
         <ion-title>About</ion-title>
       </ion-toolbar>
     </ion-header>
