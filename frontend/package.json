@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ionic/vue": "0.0.4",
+    "axios": "^0.18.0",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
