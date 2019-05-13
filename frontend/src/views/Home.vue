@@ -11,7 +11,7 @@
     <ion-content class="ion-padding">
       <div style="text-align: center;">
         <h1>Wilkommen bei Pfinder</h1>
-        <img alt="Vue logo" src="../assets/logo.png" width="200">
+        <img alt="Pfinder Logo" src="../assets/logo.png" width="200">
         <br>
       </div>
     </ion-content>
