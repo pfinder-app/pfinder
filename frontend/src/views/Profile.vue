@@ -26,7 +26,6 @@
     user: IUser|null = null;
 
     mounted() {
-      this.user = this.$store.state.App.user;
     }
 
   }
