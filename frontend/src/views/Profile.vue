@@ -23,7 +23,9 @@
   @Component({})
   export default class Profile extends Vue {
 
-    user: IUser|null = null;
+    public get user(): IUser|null {
+        return this.$store.state.App.user;
+    }
 
     mounted() {
     }
