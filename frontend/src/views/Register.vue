@@ -45,7 +45,13 @@
           email: this.email,
         };
         axios.post('/api/me', { data: data }).then((response) => {
-          this.$store.commit('SET_LOGGEDIN', true);
+          if (response.status === 200) {
+            if (response.data.data.token) {
+              let token = response.data.data.token;
+              localStorage.setItem('pfinder_token', token);
+              this.$store.commit('SET_LOGGEDIN', true);
+            }
+          }
         })
       }
     }

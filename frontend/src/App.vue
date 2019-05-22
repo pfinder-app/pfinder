@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import {Component, Vue, Watch} from 'vue-property-decorator';
   import AppMenu from "@/components/AppMenu.vue";
   import {IUser} from "@/interfaces/IUser";
   import axios from 'axios';
@@ -34,9 +34,20 @@
     }
 
     mounted() {
-      axios.get('/api/users/1').then((response) => {
-        this.$store.commit('SET_USER', response.data.data)
-      })
+      let token = localStorage.getItem('pfinder_token');
+      if (token) {
+        this.$store.commit('SET_LOGGEDIN', true);
+      }
+    }
+
+    @Watch('isLoggedIn')
+    public watchIsLoggedIn() {
+      if (this.isLoggedIn) {
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('pfinder_token');
+        axios.get('/api/me').then((response) => {
+          this.$store.commit('SET_USER', response.data.data)
+        })
+      }
     }
   }
 </script>
