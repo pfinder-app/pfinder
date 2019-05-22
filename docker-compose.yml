@@ -24,7 +24,6 @@ services:
       BUNDLE_PATH: /usr/local/bundle
     depends_on:
       - db
-<<<<<<< HEAD
 
   frontend:
     build: ./frontend
@@ -43,8 +42,6 @@ services:
       # BUNDLE_PATH: /usr/local/bundle
     depends_on:
       - db
-=======
->>>>>>> Implement authentication
 
 volumes:
   bundle:

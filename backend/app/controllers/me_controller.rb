@@ -1,8 +1,8 @@
-class UsersController < ApplicationController
+class MeController < ApplicationController
   before_action :authorize!, except: %i[create]
-  before_action :set_user, only: %i[show update]
+  before_action :set_user, only: %i[index update]
 
-  def show
+  def index
     render_success UserEntity.represent(@user)
   end
 
