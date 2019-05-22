@@ -1,5 +1,0 @@
-#!/bin/sh
-
-#../frontend/bin/build
-cd ../backend
-bin/rails db:migrate
