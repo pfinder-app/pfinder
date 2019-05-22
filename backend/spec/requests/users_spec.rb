@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
-
   describe 'GET' do
     context 'index' do
       let!(:users) { create_list(:user, 10) }

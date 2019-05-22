@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes user_params
+    if @user.update user_params
       render_success UserEntity.represent(@user)
     else
       render_error @user.errors
