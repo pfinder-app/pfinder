@@ -12,12 +12,19 @@ Prerequisites:
 
 ```
 docker-compose run backend bin/rails db:drop db:create db:migrate db:seed
+docker-compose -c docker-compose.yml -c docker-compose.test.yml run backend bin/rails db:drop db:create
 ```
 
-#### Start Backend
+### Start Backend
 
 ```
 docker-compose up
+
+```
+
+### Run Tests
+```
+docker-compose -c docker-compose.yml -c docker-compose.test.yml run backend bin/check
 ```
 
 The backend is now available at: http://localhost:3009

@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+
+  backend:
+    command: bin/check
+    environment:
+      DATABASE_URL: postgresql://postgres@db/app_test
+      RAILS_ENV: test
+      BUNDLE_PATH: /usr/local/bundle
+
+volumes:
+  bundle:
+  node_modules:
