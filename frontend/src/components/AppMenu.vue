@@ -15,6 +15,14 @@
             </ion-label>
           </ion-item>
         </router-link>
+        <router-link to="/create_activity">
+          <ion-item @click="close()">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>
+              Neue Aktivität
+            </ion-label>
+          </ion-item>
+        </router-link>
         <router-link to="/profile">
           <ion-item @click="close()">
             <ion-icon name="person" slot="start"></ion-icon>
