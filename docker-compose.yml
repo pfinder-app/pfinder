@@ -3,6 +3,8 @@ services:
 
   db:
     image: postgres
+    ports:
+      - 127.0.0.1:55432:5432
     volumes:
       - ./tmp/docker/db/data:/var/lib/postgresql/data
 
