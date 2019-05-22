@@ -1,30 +1,32 @@
 <template>
   <div id="app">
-    <v-ons-navigator swipeable
-      :page-stack="pageStack"
-      @push-page="pageStack.push($event)"
-      @replace-page="pageStack.pop(); pageStack.push($event)"
-    ></v-ons-navigator>
+    <ion-app>
+      <app-menu></app-menu>
+      <ion-vue-router main></ion-vue-router>
+    </ion-app>
+    <ion-menu-controller></ion-menu-controller>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Home from '@/views/Home.vue';
-import Login from '@/views/Login.vue';
+  import { Component, Vue } from 'vue-property-decorator';
+  import AppMenu from "@/components/AppMenu.vue";
+  import {IUser} from "@/interfaces/IUser";
+  import axios from 'axios';
 
-@Component({})
-export default class App extends Vue {
-
-  // start page
-  public pageStack = [Login];
-
-}
+  @Component({
+    components: {
+      AppMenu
+    }
+  })
+  export default class App extends Vue {
+    mounted() {
+      axios.get('/api/users/1').then((response) => {
+        this.$store.commit('SET_USER', response.data.data)
+      })
+    }
+  }
 </script>
 
-
-<style lang="scss">
-  a {
-    text-decoration: underline;
-  }
+<style>
 </style>

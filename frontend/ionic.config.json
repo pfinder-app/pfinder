@@ -1,0 +1,7 @@
+{
+  "name": "pfinder",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "custom"
+}

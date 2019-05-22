@@ -1,12 +1,15 @@
-FROM ruby:2.5.1-alpine
-# FROM ruby:2.6.1-alpine
+# FROM ruby:2.5.1
+FROM ruby:2.6.1-alpine
 RUN apk add --no-cache --update build-base \
   linux-headers \
   git \
   postgresql-dev \
   nodejs \
   yarn \
-  tzdata
+  tzdata \
+  libc6-compat \
+  openssl
+
 RUN mkdir -p /app
 WORKDIR /app
 

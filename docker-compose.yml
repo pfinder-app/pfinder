@@ -9,7 +9,7 @@ services:
   backend:
     build: ./backend
     entrypoint: bin/docker-entrypoints/backend.sh
-    command: bin/rails s -p ${PORT:-3009} -b '0.0.0.0'
+    command: bin/rails s -b 0.0.0.0 -p ${PORT:-3009}
     volumes:
       - ./backend:/app
       # - node_modules:/app/node_modules
@@ -22,6 +22,24 @@ services:
       # WEBPACKER_DEV_SERVER_HOST: webpack
       # MAILER_URL: "smtp://mail?from=no-reply@heimverwaltung.localhost"
       BUNDLE_PATH: /usr/local/bundle
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    entrypoint: bin/docker-entrypoints/frontend.sh
+    command: ionic serve
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "${PORT:-8100}:${PORT:-8100}"
+    # environment:
+      # DATABASE_URL: postgresql://postgres@db/app_development
+      # RAILS_ENV: development
+      # WEBPACKER_DEV_SERVER_HOST: webpack
+      # MAILER_URL: "smtp://mail?from=no-reply@heimverwaltung.localhost"
+      # BUNDLE_PATH: /usr/local/bundle
     depends_on:
       - db
 

@@ -1,24 +1,32 @@
-.DS_Store
-node_modules
-/dist
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
 
-/tests/e2e/videos/
-/tests/e2e/screenshots/
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+.vscode/
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
+.idea/
+.ionic/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+www/
+node_modules/
+tmp/
+temp/
+dist
+platforms/
+plugins/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
