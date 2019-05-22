@@ -3,11 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'load user from database' do
-    subject { User.find(user.id) }
+  subject { User.find(user.id) }
 
-    let(:user) { create(:user) }
+  let(:user) { create(:user) }
 
-    it { is_expected.to be_truthy }
-  end
+  it { is_expected.to be_truthy }
 end
