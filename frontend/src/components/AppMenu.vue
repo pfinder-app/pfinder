@@ -17,7 +17,7 @@
         </router-link>
         <router-link to="/create_activity">
           <ion-item @click="close()">
-            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
             <ion-label>
               Neue Aktivität
             </ion-label>

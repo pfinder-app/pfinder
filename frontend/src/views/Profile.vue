@@ -13,6 +13,13 @@
       <!--<div>{{user.scoutgroup}}, {{user.canton}}</div>
       <div>{{user.birthdate}}</div>-->
       <div>{{user.email}}</div>
+
+      <br>
+      <br>
+      <br>
+      <div>
+        <a @click="logout">Abmelden</a>
+      </div>
     </ion-content>
   </div>
 </template>
@@ -29,6 +36,11 @@
     }
 
     mounted() {
+    }
+
+    logout() {
+      localStorage.removeItem('pfinder_token');
+      this.$store.commit('SET_LOGGEDIN', false);
     }
 
   }
