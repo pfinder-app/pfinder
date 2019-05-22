@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   before_action :authorize!
 
   def authorize!
-    render_error({ message: "Not authorized"}, :unauthorized) unless current_user
+    render_error({ message: 'Not authorized' }, :unauthorized) unless current_user
   end
 
   def current_user

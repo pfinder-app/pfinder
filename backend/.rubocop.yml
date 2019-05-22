@@ -1,3 +1,7 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
 Rails:
   Enabled: true
 
@@ -22,6 +26,24 @@ Style/NonNilCheck:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+    - 'config/environments/**/*.rb'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Exclude:
+    - 'spec/system/**/*'
+    - 'spec/views/**/*'
+  SkipBlocks: true
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/system/**/*'
+    - 'spec/requests/**/*'
+
+RSpec/NestedGroups:
+  Max: 5
 
 AllCops:
   Exclude:
@@ -32,3 +54,4 @@ AllCops:
     - 'tmp/**/*'
     - 'db/**/*'
     - 'vendor/**/*'
+    - 'node_modules/**/*'

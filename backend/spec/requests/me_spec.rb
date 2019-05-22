@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'MeController', type: :request do
-
   describe 'GET' do
     context 'index' do
       it_behaves_like 'an unauthorized request' do
@@ -10,7 +11,7 @@ RSpec.describe 'MeController', type: :request do
       it_behaves_like 'an authorized request' do
         let!(:user) { create(:user) }
         before do
-          get('/api/me', headers: { Authorization:  "Token #{user.token}"})
+          get('/api/me', headers: { Authorization: "Token #{user.token}" })
         end
       end
 
@@ -28,8 +29,8 @@ RSpec.describe 'MeController', type: :request do
       #   it 'returns correct users' do
       #     expect(response).to have_http_status :unauthorized
       #   end
-      end
     end
+  end
 
   # describe 'POST' do
   #   it 'returns 200' do

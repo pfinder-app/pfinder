@@ -5,11 +5,11 @@ class User < ApplicationRecord
 
   before_create :generate_token
 
-  validates :email, format: { with: %r[\A\S+@.+\.\S+\z] }, presence: true, uniqueness: true
+  validates :email, format: { with: /\A\S+@.+\.\S+\z/ }, presence: true, uniqueness: true
   validates :name, presence: true
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64(64)
-    generate_token if self.class.exists?(token: self.token)
+    generate_token if self.class.exists?(token: token)
   end
 end
