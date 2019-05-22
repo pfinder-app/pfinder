@@ -11,7 +11,7 @@ Prerequisites:
 #### Database Setup
 
 ```
-docker-compose run backend bin/rails db:create db:migrate db:seed
+docker-compose run backend bin/rails db:drop db:create db:migrate db:seed
 ```
 
 #### Start Backend
