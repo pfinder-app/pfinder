@@ -1,4 +1,18 @@
 class ApplicationController < ActionController::API
+  before_action :authorize!
+
+  def authorize!
+    render_error({ message: "Not authorized"}, :unauthorized) unless current_user
+  end
+
+  def current_user
+    @current_user ||= auth_token.presence && User.find_by(token: auth_token)
+  end
+
+  def auth_token
+    @auth_token ||= request.headers['Authorization']&.split(' ')&.last
+  end
+
   rescue_from ActiveRecord::RecordNotFound do |e|
     render_error({ message: e.message }, :not_found)
   end
