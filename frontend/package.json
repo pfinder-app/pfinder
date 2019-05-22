@@ -31,6 +31,8 @@
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "localforage": "^1.7.3",
+    "localforage-cordovasqlitedriver": "^1.8.0",
     "typescript": "^3.2.1",
     "vue-template-compiler": "^2.5.21"
   },
