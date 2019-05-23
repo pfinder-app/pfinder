@@ -3,13 +3,15 @@ services:
 
   db:
     image: postgres
+    ports:
+      - 127.0.0.1:55432:5432
     volumes:
       - ./tmp/docker/db/data:/var/lib/postgresql/data
 
   backend:
     build: ./backend
     entrypoint: bin/docker-entrypoints/backend.sh
-    command: bin/rails s -p ${PORT:-3009} -b '0.0.0.0'
+    command: bin/rails s -b 0.0.0.0 -p ${PORT:-3009}
     volumes:
       - ./backend:/app
       # - node_modules:/app/node_modules
@@ -19,6 +21,7 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres@db/app_development
       RAILS_ENV: development
+      ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN:-<PUT YOUR DEFAULT HERE>}"
       # WEBPACKER_DEV_SERVER_HOST: webpack
       # MAILER_URL: "smtp://mail?from=no-reply@heimverwaltung.localhost"
       BUNDLE_PATH: /usr/local/bundle

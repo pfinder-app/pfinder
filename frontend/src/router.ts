@@ -22,5 +22,10 @@ export default new IonicVueRouter({
       name: 'profile',
       component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
     },
+    {
+      path: '/create_activity',
+      name: 'create_activity',
+      component: () => import(/* webpackChunkName: "create_activity" */ './views/CreateActivity.vue'),
+    },
   ],
 });
