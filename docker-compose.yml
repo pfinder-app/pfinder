@@ -21,6 +21,7 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres@db/app_development
       RAILS_ENV: development
+      ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN:-<PUT YOUR DEFAULT HERE>}"
       # WEBPACKER_DEV_SERVER_HOST: webpack
       # MAILER_URL: "smtp://mail?from=no-reply@heimverwaltung.localhost"
       BUNDLE_PATH: /usr/local/bundle

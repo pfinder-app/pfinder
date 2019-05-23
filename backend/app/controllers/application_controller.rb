@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   before_action :authorize!
 
   def authorize!
-    render_error({ message: "Not authorized"}, :unauthorized) unless current_user
+    render_error({ message: 'Not authorized' }, :unauthorized) unless current_user
   end
 
   def current_user
@@ -25,11 +27,13 @@ class ApplicationController < ActionController::API
 
   def render_success(data = nil, status = :ok)
     return head status unless data
+
     render json: { data: data }, status: status
   end
 
   def render_error(errors = nil, status = :bad_request)
     return head status unless errors
+
     render json: { errors: errors }, status: status
   end
 end

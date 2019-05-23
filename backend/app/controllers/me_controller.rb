@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MeController < ApplicationController
   before_action :authorize!, except: %i[create]
   before_action :set_user, only: %i[index update]
