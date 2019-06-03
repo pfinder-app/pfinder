@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show update destroy]
 
@@ -19,7 +21,7 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    if @activity.update_attributes activity_params
+    if @activity.update activity_params
       render_success ActivityEntity.represent(@activity)
     else
       render_error @activity.errors
