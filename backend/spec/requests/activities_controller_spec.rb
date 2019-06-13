@@ -6,26 +6,23 @@ RSpec.describe 'ActivitiesController', type: :request do
   let(:user) { create(:user) }
 
   describe 'GET' do
-    context 'index' do
-      let!(:activities) { create_list(:activity, 10, creator: user) }
-      before { get "/api/activities", headers: {} }
-
-    
+    context 'when index' do
       it 'returns all activities' do
-        expect(response).to have_http_status 200
+        create_list(:activity, 10, creator: user)
+        get '/api/activities', headers: { Authorization: "Token #{user.token}" }
+        expect(response).to have_http_status :ok
         body = JSON.parse(response.body)
         expect(body['data'].size).to eq(10)
       end
     end
 
-    context 'show' do
+    context 'when show' do
       let(:activity) { create(:activity, creator: user) }
 
-      before { get "/api/activities/#{activity.id}", headers: {} }
-
+      before { get "/api/activities/#{activity.id}", headers: { Authorization: "Token #{user.token}" } }
 
       it 'returns the activity' do
-        expect(response).to have_http_status 200
+        expect(response).to have_http_status :ok
         body = JSON.parse(response.body)
         expect(body['data']['id']).to eq activity.id
       end
@@ -34,10 +31,10 @@ RSpec.describe 'ActivitiesController', type: :request do
 
   describe 'POST' do
     it 'returns 200' do
-      post "/api/activities",
-           params: { data: attributes_for(:activity).as_json }
-
-      expect(response).to have_http_status 200
+      post '/api/activities',
+           params: { data: attributes_for(:activity).as_json.merge(creator_id: user.id) },
+           headers: { Authorization: "Token #{user.token}" }
+      expect(response).to have_http_status :ok
     end
   end
 
@@ -46,11 +43,11 @@ RSpec.describe 'ActivitiesController', type: :request do
 
     before do
       put "/api/activities/#{activity.id}",
-          params: { data: { title: 'Test' } }
+          params: { data: { title: 'Test' } }, headers: { Authorization: "Token #{user.token}" }
     end
 
     it 'returns 200' do
-      expect(response).to have_http_status 200
+      expect(response).to have_http_status :ok
       body = JSON.parse(response.body)
       expect(body['data']['title']).to eq 'Test'
     end
@@ -61,7 +58,7 @@ RSpec.describe 'ActivitiesController', type: :request do
 
     it 'returns 200' do
       expect do
-        delete "/api/activities/#{activity.id}"
+        delete "/api/activities/#{activity.id}", headers: { Authorization: "Token #{user.token}" }
       end.to change(Activity, :count).by(-1)
     end
   end
