@@ -10,6 +10,6 @@ class User < ApplicationRecord
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64(64)
-    generate_token if self.class.exists?(token: self.token)
+    generate_token if self.class.exists?(token: token)
   end
 end
