@@ -4,7 +4,7 @@ import IStorage from '@/services/IStorage';
 
 export default class Storage implements IStorage{
 
-	private dbPromise: Promise<LocalForage>;
+	private readonly dbPromise: Promise<LocalForage>;
 
 	public constructor() {
 		this.dbPromise = LocalForage.defineDriver(CordovaSQLiteDriver)
@@ -23,23 +23,27 @@ export default class Storage implements IStorage{
 			});
 	}
 
-	public ready(): Promise<void> {
-		return this.dbPromise.then(() => {});
+	public async ready(): Promise<void> {
+		await this.dbPromise;
 	}
 
-	public get<T>(key: string): Promise<T> {
-		return this.dbPromise.then(db => db.getItem(key));
+	public async get<T>(key: string): Promise<T> {
+		const db: LocalForage = await this.dbPromise;
+		return db.getItem(key);
 	}
 
-	public set<T>(key: string, value: T): Promise<T> {
-		return this.dbPromise.then(db => db.setItem(key, value));
+	public async set<T>(key: string, value: T): Promise<T> {
+		const db: LocalForage = await this.dbPromise;
+		return db.setItem(key, value);
 	}
 
-	public remove(key: string): Promise<void> {
-		return this.dbPromise.then(db => db.removeItem(key));
+	public async remove(key: string): Promise<void> {
+		const db: LocalForage = await this.dbPromise;
+		await db.removeItem(key);
 	}
 
-	public clear(): Promise<void> {
-		return this.dbPromise.then(db => db.clear());
+	public async clear(): Promise<void> {
+		const db: LocalForage = await this.dbPromise;
+		await db.clear();
 	}
 }
