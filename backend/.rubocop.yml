@@ -37,6 +37,10 @@ RSpec/DescribedClass:
     - 'spec/views/**/*'
   SkipBlocks: true
 
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/models/seeds_spec.rb'
+
 RSpec/ExampleLength:
   Exclude:
     - 'spec/system/**/*'

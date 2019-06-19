@@ -7,7 +7,7 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <router-link to="/">
+        <router-link to="/" tag="div">
           <ion-item @click="close()">
             <ion-icon name="home" slot="start"></ion-icon>
             <ion-label>
@@ -15,15 +15,15 @@
             </ion-label>
           </ion-item>
         </router-link>
-        <router-link to="/create_activity">
+        <router-link to="/create_activity" tag="div">
           <ion-item @click="close()">
-            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
             <ion-label>
               Neue Aktivität
             </ion-label>
           </ion-item>
         </router-link>
-        <router-link to="/profile">
+        <router-link to="/profile" tag="div">
           <ion-item @click="close()">
             <ion-icon name="person" slot="start"></ion-icon>
             <ion-label>
@@ -31,7 +31,7 @@
             </ion-label>
           </ion-item>
         </router-link>
-        <router-link to="/about">
+        <router-link to="/about" tag="div">
           <ion-item @click="close()">
             <ion-icon name="information-circle-outline" slot="start"></ion-icon>
             <ion-label>

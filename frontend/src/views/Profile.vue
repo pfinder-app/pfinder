@@ -10,8 +10,16 @@
     </ion-header>
     <ion-content class="ion-padding" v-if="user">
       <h1>{{user.scoutname}}</h1>
-      <div>{{user.scoutgroup}}, {{user.canton}}</div>
-      <div>{{user.birthdate}}</div>
+      <!--<div>{{user.scoutgroup}}, {{user.canton}}</div>
+      <div>{{user.birthdate}}</div>-->
+      <div>{{user.email}}</div>
+
+      <br>
+      <br>
+      <br>
+      <div>
+        <a @click="logout">Abmelden</a>
+      </div>
     </ion-content>
   </div>
 </template>
@@ -28,6 +36,11 @@
     }
 
     mounted() {
+    }
+
+    logout() {
+      localStorage.removeItem('pfinder_token');
+      this.$store.commit('SET_LOGGEDIN', false);
     }
 
   }
