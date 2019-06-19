@@ -8,3 +8,5 @@
 
 u1 = User.create(name: 'Emily', scoutname: 'Folletta', birthdate: '1991-01-01', canton: :zh, scoutgroup: 'Pfadi Züri')
 u2 = User.create(name: 'Diego', scoutname: 'Filou', birthdate: '1988-01-01', canton: :be, scoutgroup: 'Korps Limmat')
+
+a1 = Activity.create(title: "Tichu", place: "grosses Zelt", begins_at: "2019-03-28 20:00:14", duration: 50, description: "Wer will Tichu Spielen?", creator_id: 2, max_participants: 4)
