@@ -61,7 +61,7 @@
       this.data = {
         title: 'Tiju',
         place: 'Winterthur',
-        begins_at: null
+        begins_at: new Date()
       }
     }
 
