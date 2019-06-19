@@ -13,7 +13,7 @@
         <ion-label position="floating">Was möchtest du machen?</ion-label>
         <ion-input
                 :value="data.title"
-                @ionChange="data.title = $event.target.value; onInput$.next($event.target.value)"
+                @ionChange="data.title = $event.target.value"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -24,7 +24,7 @@
         <ion-label position="floating">Wo?</ion-label>
         <ion-input
                 :value="data.place"
-                @ionChange="data.place = $event.target.value; onInput$.next($event.target.value)"
+                @ionChange="data.place = $event.target.value"
         ></ion-input>
       </ion-item>
 
