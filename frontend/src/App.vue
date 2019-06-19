@@ -35,17 +35,17 @@
       return this.$store.state.App.isLoggedIn;
     }
 
-    mounted(): void {
-      let token = localStorage.getItem('pfinder_token');
+    public async mounted(): Promise<void> {
+      const token: string = await storage.get('pfinder_token');
       if (token) {
         this.$store.commit('SET_LOGGEDIN', true);
       }
     }
 
     @Watch('isLoggedIn')
-    public watchIsLoggedIn() {
+    public async watchIsLoggedIn(): Promise<void> {
       if (this.isLoggedIn) {
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('pfinder_token');
+        axios.defaults.headers.common['Authorization'] = await storage.get('pfinder_token');
         axios.get('/api/me').then((response) => {
           this.$store.commit('SET_USER', response.data.data)
         })
