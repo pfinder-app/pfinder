@@ -9,6 +9,14 @@ import './css/theme.css'
 Vue.use(Ionic);
 Vue.config.productionTip = false;
 
+// vue moment
+const moment = require('moment');
+require('moment/locale/de');
+Vue.use(require('vue-moment'), { moment });
+// vue moment typescript integration is not so great, but it works :/
+// @ts-ignore
+Vue.moment().locale('de');
+
 new Vue({
   router,
   store,

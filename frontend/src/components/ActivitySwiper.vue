@@ -10,7 +10,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          Diese Aktivität findet an folgendem Ort statt: <b>{{activity.place}}</b> und beginnt am <b>{{activity.begins_at}}</b>.
+          Diese Aktivität findet an folgendem Ort statt: <b>{{activity.place}}</b> und beginnt am <b>{{activity.begins_at | moment("DD.MM.YY - HH:mm")}}</b>.
         </ion-card-content>
       </ion-card>
     </ion-slide>
