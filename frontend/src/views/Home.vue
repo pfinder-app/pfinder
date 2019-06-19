@@ -5,23 +5,39 @@
         <ion-buttons slot="start">
           <ion-menu-button menu="start"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Hello World</ion-title>
+        <ion-title>Willkommen</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <div style="text-align: center;">
-        <h1>Wilkommen bei Pfinder</h1>
-        <img alt="Pfinder Logo" src="../assets/logo.png" width="200">
-        <br>
-      </div>
+      <activity-swiper :activities="activities"></activity-swiper>
     </ion-content>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+  import {Component, Vue, Watch} from 'vue-property-decorator';
+import axios from 'axios';
+import ActivitySwiper from "@/components/ActivitySwiper.vue";
 
-@Component({})
-export default class Home extends Vue {}
+@Component({
+  components: {ActivitySwiper}
+})
+export default class Home extends Vue {
+  private activities = [];
+
+  get isLoggedIn() {
+    return this.$store.state.App.isLoggedIn;
+  }
+
+  @Watch('isLoggedIn', { immediate: true })
+  public watchIsLoggedIn() {
+    if (this.isLoggedIn) {
+      axios.get('/api/activities').then((response) => {
+        this.activities = response.data.data;
+      })
+    }
+  }
+
+}
 </script>
 
