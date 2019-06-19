@@ -66,8 +66,7 @@
     }
 
     public addActivity() {
-      console.log('add', this.data);
-      axios.post('/api/activities', this.data).then(() => {
+      axios.post('/api/activities', {data: this.data}).then(() => {
         
       }).catch(() => {
 
