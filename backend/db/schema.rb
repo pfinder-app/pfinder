@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_180939) do
   create_table "participations", force: :cascade do |t|
     t.bigint "activity_id"
     t.bigint "user_id"
+    t.datetime "canceled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_participations_on_activity_id"

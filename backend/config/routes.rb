@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'hello_world#index'
   scope :api do
     resources :me, only: %i[index create update]
-    resources :activities
+    resources :activities do
+      resources :participations, shallow: true
+    end
   end
 end

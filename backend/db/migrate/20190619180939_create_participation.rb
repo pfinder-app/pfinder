@@ -3,6 +3,7 @@ class CreateParticipation < ActiveRecord::Migration[5.2]
     create_table :participations do |t|
       t.references :activity, foreign_key: true
       t.references :user, foreign_key: true
+      t.datetime :canceled_at
 
       t.timestamps
     end
