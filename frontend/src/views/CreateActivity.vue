@@ -18,7 +18,13 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Wann soll es stattfinden?</ion-label>
-        <ion-datetime pickerFormat="MMMM YYYY" displayFormat="D. MMM HH:mm" value="2012-12-15T13:47:20.789" minuteValues="0,15,30,45"></ion-datetime>
+        <ion-datetime
+                pickerFormat="MMMM YYYY"
+                displayFormat="D. MMM HH:mm"
+                value="2012-12-15T13:47:20.789"
+                minuteValues="0,15,30,45"
+                @ionChange="data.begins_at = $event.target.value"
+        ></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Wo?</ion-label>
@@ -40,6 +46,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   import { IUser } from '@/interfaces/IUser'
+  import axios from 'axios';
 
   @Component({})
   export default class Profile extends Vue {
@@ -53,12 +60,18 @@
     mounted() {
       this.data = {
         title: 'Tiju',
-        place: 'Winterthur'
+        place: 'Winterthur',
+        begins_at: null
       }
     }
 
     public addActivity() {
       console.log('add', this.data);
+      axios.post('/api/activities', this.data).then(() => {
+        
+      }).catch(() => {
+
+      })
     }
 
   }
