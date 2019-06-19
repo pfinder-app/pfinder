@@ -9,7 +9,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <activity-swiper :activities="activities"></activity-swiper>
+      <activity-swiper :activities="activities" v-if="activities.length > 0"></activity-swiper>
     </ion-content>
   </div>
 </template>
