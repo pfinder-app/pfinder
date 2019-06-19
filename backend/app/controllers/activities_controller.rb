@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new activity_params
+    @activity = current_user.activities.new activity_params
     if @activity.save
       render_success ActivityEntity.represent(@activity)
     else
