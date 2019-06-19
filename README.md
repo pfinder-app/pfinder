@@ -15,6 +15,11 @@ docker-compose run backend bin/rails db:drop db:create db:migrate db:seed
 docker-compose -c docker-compose.yml -c docker-compose.test.yml run backend bin/rails db:drop db:create
 ```
 
+#### Reset Database
+```
+docker-compose run backend bin/rails db:reset
+```
+
 ### Start Backend
 
 ```

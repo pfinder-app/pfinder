@@ -51,6 +51,7 @@
           const token = response.data.data.token;
           await storage.set('pfinder_token', token);
           this.$store.commit('SET_LOGGEDIN', true);
+          this.$router.push('/');
         }
       }
     }
