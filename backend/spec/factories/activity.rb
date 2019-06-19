@@ -5,5 +5,6 @@ FactoryBot.define do
     place { Faker::Address.city }
     title { Faker::Lorem.word }
     begins_at { Faker::Date.forward(23) }
+    creator { build(:user) }
   end
 end
