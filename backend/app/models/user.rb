@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   before_create :generate_token
 
-  has_many :activities, inverse_of: :creator, foreign_key: :creator_id
+  has_many :activities, inverse_of: :creator, foreign_key: :creator_id, dependent: :restrict_with_error
 
   validates :email, format: { with: /\A\S+@.+\.\S+\z/ }, presence: true, uniqueness: true
   validates :scoutname, presence: true
