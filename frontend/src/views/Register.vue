@@ -48,7 +48,7 @@
           if (response.status === 200) {
             if (response.data.data.token) {
               let token = response.data.data.token;
-              storage.set('pfinder_token', token);
+              localStorage.setItem('pfinder_token', token);
               this.$store.commit('SET_LOGGEDIN', true);
             }
           }
