@@ -32,23 +32,25 @@
     private email: string = '';
 
     get isValid() {
-      // TODO: better check email address
-      return (this.scoutname.length > 0 && this.email.length > 0);
+      return (this.scoutname.length > 0 && this.isEmailValid);
+    }
+
+    get isEmailValid(): boolean {
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(this.email).toLowerCase());
     }
 
     public async register(): Promise<void> {
       if (this.isValid) {
-        // TODO: move to after registration when it works
-
         const data = {
           scoutname: this.scoutname,
           email: this.email,
         };
         const response = await axios.post('/api/me', { data: data });
         if (response.status === 200 && response.data.data.token) {
-		  const token = response.data.data.token;
-		  await storage.set('pfinder_token', token);
-		  this.$store.commit('SET_LOGGEDIN', true);
+          const token = response.data.data.token;
+          await storage.set('pfinder_token', token);
+          this.$store.commit('SET_LOGGEDIN', true);
         }
       }
     }
