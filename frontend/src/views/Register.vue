@@ -21,6 +21,9 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   import axios from 'axios';
+  import Storage from '@/services/Storage';
+
+  const storage = new Storage();
 
   @Component({})
   export default class Register extends Vue {
@@ -31,9 +34,6 @@
     get isValid() {
       // TODO: better check email address
       return (this.scoutname.length > 0 && this.email.length > 0);
-    }
-
-    mounted() {
     }
 
     public register() {
@@ -48,7 +48,7 @@
           if (response.status === 200) {
             if (response.data.data.token) {
               let token = response.data.data.token;
-              localStorage.setItem('pfinder_token', token);
+              storage.set('pfinder_token', token);
               this.$store.commit('SET_LOGGEDIN', true);
             }
           }

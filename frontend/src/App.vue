@@ -17,9 +17,11 @@
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator';
   import AppMenu from "@/components/AppMenu.vue";
-  import {IUser} from "@/interfaces/IUser";
   import axios from 'axios';
+  import Storage from '@/services/Storage';
   import Register from "@/views/Register.vue";
+
+  const storage = new Storage();
 
   @Component({
     components: {
@@ -33,8 +35,8 @@
       return this.$store.state.App.isLoggedIn;
     }
 
-    mounted() {
-      let token = localStorage.getItem('pfinder_token');
+    mounted(): void {
+      let token = storage.get('pfinder_token');
       if (token) {
         this.$store.commit('SET_LOGGEDIN', true);
       }
@@ -43,7 +45,7 @@
     @Watch('isLoggedIn')
     public watchIsLoggedIn() {
       if (this.isLoggedIn) {
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('pfinder_token');
+        axios.defaults.headers.common['Authorization'] = storage.get('pfinder_token');
         axios.get('/api/me').then((response) => {
           this.$store.commit('SET_USER', response.data.data)
         })
