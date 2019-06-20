@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :activities, inverse_of: :creator, foreign_key: :creator_id, dependent: :restrict_with_error
+  has_many :participations, inverse_of: :user, dependent: :restrict_with_error
+
   enum canton: %i[zh be sgarai]
 
   before_create :generate_token
