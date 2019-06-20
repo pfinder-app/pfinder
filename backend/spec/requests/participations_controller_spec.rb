@@ -4,67 +4,75 @@ require 'rails_helper'
 
 RSpec.describe ParticipationsController, type: :request do
   let(:user) { create(:user) }
+  let(:activity) { create(:activity, creator: user) }
 
   describe 'GET #index' do
-    let(:activity) { create(:activity, creator: user) }
-    let(:participations) { create_list(:participation, 10, activity: activity) }
-    subject(:request) { get '/api/activities', headers: { Authorization: "Token #{user.token}" } }
+    subject(:request) { get url, headers: { Authorization: "Token #{user.token}" } }
 
-    before do
+    before { create_list(:participation, 10, activity: activity) }
 
-    end
+    let(:url) { "/api/activities/#{activity.to_param}/participations" }
 
-      it '' do
-        expect(response).to have_http_status :ok
-        body = JSON.parse(response.body)
-        expect(body['data'].size).to eq(10)
-      end
-    end
-
-    context 'when show' do
-      let(:participation) { create(:participation, creator: user) }
-
-      before { get "/api/activities/#{participation.id}", headers: { Authorization: "Token #{user.token}" } }
-
-      it 'returns the participation' do
-        expect(response).to have_http_status :ok
-        body = JSON.parse(response.body)
-        expect(body['data']['id']).to eq participation.id
-      end
-    end
-  end
-
-  describe 'POST' do
-    it 'returns 200' do
-      post '/api/activities',
-           params: { data: attributes_for(:participation).as_json.merge(creator_id: user.id) },
-           headers: { Authorization: "Token #{user.token}" }
-      expect(response).to have_http_status :ok
-    end
-  end
-
-  describe 'PUT' do
-    let(:participation) { create(:participation, creator: user) }
-
-    before do
-      put "/api/activities/#{participation.id}",
-          params: { data: { title: 'Test' } }, headers: { Authorization: "Token #{user.token}" }
-    end
-
-    it 'returns 200' do
+    it 'returns all participations' do
+      request
       expect(response).to have_http_status :ok
       body = JSON.parse(response.body)
-      expect(body['data']['title']).to eq 'Test'
+      expect(body['data'].size).to eq(10)
     end
   end
 
-  describe 'DELETE' do
-    let!(:participation) { create(:participation, creator: user) }
+  describe 'POST #create' do
+    subject(:request) { post url, headers: { Authorization: "Token #{user.token}" }, params: {} }
 
-    it 'returns 200' do
-      expect do
-        delete "/api/activities/#{participation.id}", headers: { Authorization: "Token #{user.token}" }
-      end.to change(Participation, :count).by(-1)
+    let(:url) { "/api/activities/#{activity.to_param}/participations" }
+
+    it 'creates a participation' do
+      request
+      expect(response).to have_http_status :ok
+      body = JSON.parse(response.body)
+      expect(body.dig('data', 'id')).not_to be_falsy
+    end
+
+    context 'when participation exists, but is canceled' do
+      it 'reactivates the participation' do
+        participation = create(:participation, user: user, activity: activity, canceled_at: 1.day.ago)
+        request
+        expect(response).to have_http_status :ok
+        body = JSON.parse(response.body)
+        expect(body.dig('data', 'id')).to eq(participation.id)
+        expect(body.dig('data', 'canceled_at')).to be_falsy
+      end
+    end
+  end
+
+  describe 'GET #show' do
+    subject(:request) { get url, headers: { Authorization: "Token #{user.token}" } }
+
+    let(:participation) { create(:participation, user: user, activity: activity, canceled_at: 1.day.ago) }
+    let(:url) { "/api/participations/#{participation.to_param}" }
+
+    it 'shows a participation' do
+      request
+      expect(response).to have_http_status :ok
+      data = JSON.parse(response.body)['data']
+      expect(data['id']).to eq(participation.id)
+      expect(data['user_id']).to eq(participation.user_id)
+      expect(data['activity_id']).to eq(participation.activity_id)
+      expect(data['canceled_at']).to be_truthy
+    end
+  end
+
+  describe 'DELETE #delete' do
+    subject(:request) { delete url, headers: { Authorization: "Token #{user.token}" } }
+
+    let(:participation) { create(:participation, user: user, activity: activity) }
+    let(:url) { "/api/participations/#{participation.to_param}" }
+
+    it 'deletes a participation' do
+      request
+      expect(response).to have_http_status :ok
+      participation.reload
+      expect(participation).to be_canceled
     end
   end
 end

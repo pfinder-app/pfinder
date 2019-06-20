@@ -5,4 +5,8 @@ class Participation < ApplicationRecord
   belongs_to :activity, inverse_of: :participations
 
   validates :activity, uniqueness: { scope: :user }
+
+  def canceled?
+    canceled_at.present?
+  end
 end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ParticipationsController < ApplicationController
-  before_action :set_participation, only: %i[show update destroy]
-  before_action :set_activity, only: %i[index create new]
+  before_action :set_participation, only: %i[show destroy]
+  before_action :set_activity, only: %i[index create]
 
   def index
     render_success(ParticipationEntity.represent(@activity.participations))
@@ -13,16 +13,8 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = @activity.participations.new participation_params
-    if @participation.save
-      render_success ParticipationEntity.represent(@participation)
-    else
-      render_error @participation.errors
-    end
-  end
-
-  def update
-    if @participation.update participation_params
+    @participation = Participation.find_or_initialize_by(activity: @activity, user: current_user)
+    if @participation.update(canceled_at: nil)
       render_success ParticipationEntity.represent(@participation)
     else
       render_error @participation.errors
@@ -30,7 +22,7 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    if @participation.destroy
+    if @participation.update(canceled_at: Time.zone.now)
       render_success
     else
       render_error
